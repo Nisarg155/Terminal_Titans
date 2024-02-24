@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration</title>
+</head>
+<body>
+
+  <h2>Doctor Registration Form</h2>
+
+  <form method="post" enctype="multipart/form-data" action="{% url 'Dregister' %}">
+    {% csrf_token %}
+
+ 
+
+    <label for="specialist">Specialist:</label>
+    <input type="text" name="specialist" required><br>
+
+    <label for="experience_in_year">Experience (in years):</label>
+    <input type="number" name="experience_in_year" required><br>
+
+    <label for="description">Description:</label>
+    <textarea name="description" rows="4" cols="50"></textarea><br>
+
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*" required><br>
+
+    <label for="license">License Image:</label>
+    <input type="file" name="license" accept="image/*" required><br>
+
+    <input type="submit" value="Register">
+  </form>
+
+</body>
+</html>

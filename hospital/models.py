@@ -8,6 +8,8 @@ class Doctor(models.Model):
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
     image=models.ImageField(upload_to='doctor/')
+    license=models.ImageField(upload_to='doctor/')
+
 
 
     def __str__(self):
@@ -32,7 +34,7 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     # email = models.EmailField(max_length=50)
     blood_group = models.CharField(max_length=5)
-    mobile_no = models.IntegerField(max_length=10)
+    mobile_no = models.IntegerField()
     allergies_description = models.TextField(blank=True,null=True)
 
 
