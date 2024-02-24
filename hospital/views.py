@@ -1,7 +1,19 @@
+from django.shortcuts import render
+from .models import Doctor
+from .models import hospital_details
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Doctor, User  # Add import statement for the User model
+
+def doctor_detail(request):
+    doctors=Doctor.objects.all()
+    context={
+        'doctors':doctors
+    }
+    return render(request,'doctor_view.html',context)
+# Create your views here.
+
 
 
 def Dregister(request):
@@ -31,3 +43,8 @@ def Uregister(request):
         saverecord.save()
 
     return render(request, 'Uregister.html')
+
+
+def home(request):
+    hospitals = hospital_details.objects.all()
+    return render(request, 'home.html', {'hospitals': hospitals})
