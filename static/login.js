@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("container");
     const signIn = document.getElementById("signIn-updated");
     const signUp = document.getElementById("signup-updated");
+    const role = document.getElementById("roleSelect");
 
     signUp.addEventListener("click", function () {
         container.classList.add("right-active");
@@ -50,10 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = signup["email"].value;
         const password = signup["password"].value;
         console.log(name, email, password);
-
+        const roleValue = role.options[role.selectedIndex].value;
+        console.log(roleValue);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                window.location.href = "index.html";
+
+                if(roleValue === "Doctor")
+                window.location.href = "Dregister";
+                else if(roleValue === "Patient")
+                window.location.href = "Uregister";
             })
             .catch((error) => {
                 const errorCode = error.code;
