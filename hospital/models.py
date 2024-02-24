@@ -7,5 +7,7 @@ class Doctor(models.Model):
     specialist=models.CharField(max_length=30)
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
+    image=models.ImageField(upload_to='doctor/')
     
+
 # Create your models here.
