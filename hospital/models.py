@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class hospital_details(models.Model):
-    hospital_img = models.ImageField(upload_to="hospital/")
+    hospital_img = models.ImageField(upload_to="doctor/")
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True,null=True)
     city = models.CharField(max_length=50)

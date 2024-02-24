@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import hospital_details
 
-# Create your views here.
+def home(request):
+    hospitals = hospital_details.objects.all()
+    return render(request, 'home.html', {'hospitals': hospitals})
