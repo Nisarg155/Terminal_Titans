@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(roleValue);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-
+                let uid = userCredential.user.uid;
+                document.cookie = `uid=${uid}`;
+                document.cookie = `role=${roleValue}`;
                 if(roleValue === "Doctor")
                 window.location.href = "Dregister";
                 else if(roleValue === "Patient")
@@ -78,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                document.cookie = `uid=${userCredential.user.uid}`;
                 window.location.href = "Dregister.html";
             })
             .catch((error) => {
