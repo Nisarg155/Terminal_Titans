@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor-View</title>
+</head>
+<body>
+    {% load bootstrap5 %} 
+    {% bootstrap_css %} 
+    {% bootstrap_javascript %}
+
+
+
+
+
+
+    <div class="card-group">
+        {% for d in doctors %}
+        <div class="card mb-3 text-center">
+            <div class="mb-4">
+                <img src="{{d.image.url}}" class="card-img-top mx-auto d-block" alt="..." style="height: 300px; width: 200px; object-fit: cover;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{d.name}}</h5>
+                <h5 class="card-text">{{d.specialist}}</h5>
+                <h4 class="card-text">{{d.description}}</h4>
+                
+                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+</body>
+</html>
