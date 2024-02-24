@@ -8,6 +8,10 @@ class Doctor(models.Model):
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
     image=models.ImageField(upload_to='doctor/')
+
+
+    def __str__(self):
+        return self.name
     
 
 # Create your models here.
