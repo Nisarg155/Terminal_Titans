@@ -1,13 +1,15 @@
 from django.db import models
 
-
+def user_directory_path(instance, filename):
+    # Upload the file to a directory based on the model name and instance ID
+    return f'{instance.__class__.__name__}/{instance.id}/{filename}'
 class Doctor(models.Model):
     name=models.CharField(max_length=50)
     email=models.EmailField(unique=True,max_length=40)
     specialist=models.CharField(max_length=30)
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
-    image=models.ImageField(upload_to='doctor/')
+    image=models.ImageField(upload_to=user_directory_path)
 
 
     def __str__(self):
@@ -16,7 +18,7 @@ class Doctor(models.Model):
 
 # Create your models here.
 class hospital_details(models.Model):
-    hospital_img = models.ImageField(upload_to="hospital/")
+    hospital_img = models.ImageField(upload_to=user_directory_path)
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True,null=True)
     city = models.CharField(max_length=50)
@@ -32,7 +34,7 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     # email = models.EmailField(max_length=50)
     blood_group = models.CharField(max_length=5)
-    mobile_no = models.IntegerField(max_length=10)
+    mobile_no = models.IntegerField()
     allergies_description = models.TextField(blank=True,null=True)
 
 
