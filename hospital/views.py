@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Doctor, User  # Add import statement for the User model
 
-def test (request):
-    return HttpResponse("Hello World")
+
 def Dregister(request):
     if request.method == 'POST':
         name = request.POST.get('name')

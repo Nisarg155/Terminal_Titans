@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                window.location.href = "index.html";
+                window.location.href = "Dregister.html";
             })
             .catch((error) => {
                 const errorCode = error.code;

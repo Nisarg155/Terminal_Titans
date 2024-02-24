@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+
+  <h2>User Registration Form</h2>
+
+  <form method="post" action="{% url 'Uregister' %}">
+    {% csrf_token %}
+
+  
+
+    <label for="blood_group">Blood Group:</label>
+    <input type="text" name="blood_group" maxlength="5" required><br>
+
+    <label for="mobile_no">Mobile Number:</label>
+    <input type="tel" name="mobile_no" pattern="[0-9]{10}" required><br>
+
+    <label for="allergies_description">Allergies Description:</label>
+    <textarea name="allergies_description" rows="4" cols="50"></textarea><br>
+
+    <input type="submit" value="Register">
+  </form>
+
+</body>
+</html>
