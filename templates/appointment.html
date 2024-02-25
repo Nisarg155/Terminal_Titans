@@ -1,0 +1,39 @@
+<!-- appointment_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor AP</title>
+</head>
+<body>
+<button id="openAppointmentForm">Schedule Appointment</button>
+
+<div id="appointmentPopup" style="display: none;">
+<form id="appointmentForm" method="post" action="{% url 'hospital:Appointment' %}">
+        {% csrf_token %}
+        <label for="date">Appointment Date:</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="time">Appointment Time:</label>
+        <input type="time" id="time" name="time">
+        <br>
+        <!-- Add other form fields as needed -->
+        <button type="submit">Submit Appointment</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+<script>
+    // JavaScript to handle the popup
+    document.getElementById('openAppointmentForm').addEventListener('click', function () {
+        document.getElementById('appointmentPopup').style.display = 'block';
+    });
+
+    document.getElementById('appointmentForm').addEventListener('submit', function () {
+        // Additional JavaScript logic if needed
+    });
+</script>

@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Registration</title>
+        <link rel="stylesheet" href="../static/Dregister.css" />
+
 </head>
 <body>
 
-  <h2>Doctor Registration Form</h2>
 
-  <form method="post" enctype="multipart/form-data" action="{% url 'Dregister' %}">
+  <form method="post" enctype="multipart/form-data" action="{% url 'hospital:Dregister' %}">
     {% csrf_token %}
 
  
