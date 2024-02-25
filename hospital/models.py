@@ -25,13 +25,13 @@ class hospital_details(models.Model):
 
 class Doctor(models.Model):
     id=models.CharField(max_length=50,primary_key=True,null=False,default='D0001')
-    h_id = models.ForeignKey(hospital_details, on_delete=models.CASCADE)
+    h_id = models.ForeignKey(hospital_details, on_delete=models.CASCADE,null=True)
     name=models.CharField(max_length=50)
     mobile=models.CharField(default='0',max_length=10)
     specialist=models.CharField(max_length=30)
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
-    hospital_detail=models.ForeignKey(hospital_details,on_delete=models.CASCADE,null=True)
+    hospital_detail=models.ForeignKey(hospital_details,on_delete=models.CASCADE,null=True,related_name='doctors',default=1)
     image=models.ImageField(upload_to=user_directory_path)
     license=models.ImageField(upload_to=user_directory_path)
 
