@@ -33,6 +33,7 @@ def Dregister(request):
                             experience_in_year=experience_in_year, description=description,
                             image=image, license=license)
         saverecord.save()
+        redirect('hospital:home')
 
     return render(request, 'Dregister.html')
 
@@ -47,6 +48,7 @@ def Uregister(request):
         saverecord = User(user_id=uid, name=name, blood_group=blood_group, mobile_no=mobile_no,
                           allergies_description=allergies_description)
         saverecord.save()
+        redirect('hospital:home')
 
     return render(request, 'Uregister.html')
 

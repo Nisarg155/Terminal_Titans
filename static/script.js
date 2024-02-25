@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         form.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const username = document.getElementById("nameId").value;
+            // const username = document.getElementById("nameId").value;
             // console.log(username);
             // Redirect to the next page with the username as a query parameter
             // window.location.href = `../../index.html?username=${username}`;
