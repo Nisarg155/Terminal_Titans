@@ -82,7 +82,7 @@ Neutrals and Pastels: Create a neutral and welcoming atmosphere (e.g., backgroun
       <div class="col-md-8">
         <p class="card-text">{{ hospital.description }}</p>
         <p class="card-text">{{ hospital.city }}, {{ hospital.state }} - {{ hospital.zip_code }}</p>
-        <button type="button" class="btn btn-primary">View Details</button>
+        <button type="button" class="btn btn-primary"><a href="/doctor/{{hospital.id}}" style="text-decoration: none; color: black;">View Details</a></button>
       </div>
     </div>
   </div>
