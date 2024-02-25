@@ -20,9 +20,15 @@
 
     function  store(d_id)
     {
-        let date =  document.getElementById("date");
-        let desc = document.getElementById("description");
+        let date =  document.getElementById("date").value;
+        let desc = document.getElementById("description").value;
         let uid = getCookieValue("uid");
+        let modal = document.getElementById("exampleModal");
+        modal.classList.remove("show");
+        modal.style.display = "none";
+        let backdrop = document.getElementsByClassName("modal-backdrop")[0];
+        backdrop.remove();
+        
 
     }
 
@@ -94,16 +100,18 @@
       </div>
       <div class="modal-body">
          <label for="date">Date:</label>
-        <input type="date" name="date" placeholder="Enter Appointment date" required>
+        <input type="date" name="date" id="date" placeholder="Enter Appointment date" required>
           <br>
           <br>
+          
         <label for="description">Description:</label>
-          <textarea type="text" name="description" placeholder="Enter Your Problem Description" required></textarea>
+          <br>
+          <textarea type="text" id="description" name="description" placeholder="Enter Your Problem Description" required></textarea>
 
       </div>
       <div class="modal-footer">
 {#        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
-        <button type="button" class="btn btn-primary" onclick="store({{ d.id }})">Book</button>
+        <button type="button" class="btn btn-primary" onclick="store('{{ d.id }}')">Book</button>
       </div>
     </div>
   </div>
