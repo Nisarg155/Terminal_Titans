@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
-            <link rel="stylesheet" href="../static/Uregister.css" />
-
+    <title>Doctor Registration</title>
+    <link rel="stylesheet" href="../static/Uregister.css" />
 </head>
 <body>
 
-  <h2>User Registration Form</h2>
+<div class="container">
+    <form method="post" enctype="multipart/form-data" action="{% url 'hospital:Uregister' %}">
+        {% csrf_token %}
 
-  <form method="post" action="{% url 'hospital:Uregister' %}">
-    {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
 
-  
-    <label for="name">Name:</label>
-    <input type="text" name="name" required><br>
-    <label for="blood_group">Blood Group:</label>
-    <input type="text" name="blood_group" maxlength="5" required><br>
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" placeholder="Enter your mobile number" required>
 
-    <label for="mobile_no">Mobile Number:</label>
-    <input type="tel" name="mobile_no" pattern="[0-9]{10}" required><br>
+        <label for="specialist">Blood_gorup:</label>
+        <input type="text" name="specialist" placeholder="Enter your specialist" required>
 
-    <label for="allergies_description">Allergies Description:</label>
-    <textarea name="allergies_description" rows="4" cols="50"></textarea><br>
+        <label for="experience_in_year">   Allergies_description:</label>
+        <input type="number" name="experience_in_year" placeholder="Enter your experience" required>
 
-    <input type="submit" value="Register">
-  </form>
+        
 
+        <input type="submit" value="Register">
+    </form>
+</div>
 </body>
 </html>
