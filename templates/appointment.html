@@ -1,44 +1,9 @@
-<!-- appointment_form.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor AP</title>
-</head>
-<body>
-<div id="appointmentPopup" class="popup" style="display: none;">
-    <!-- Your appointment form goes here -->
 
-
-<form id="openAppointmentForm" method="post" action="{% url 'hospital:Appointment' %}">
-        {% csrf_token %}
-        <label for="date">Appointment Date:</label>
-        <input type="date" id="date" name="date">
-        <br>
-        <label for="time">Appointment Time:</label>
-        <input type="time" id="time" name="time">
-        <br>
-        <!-- Add other form fields as needed -->
-        <button type="submit">Submit Appointment</button>
-    </form>
-</div>
-</body>
-</html>
-
-
-<!-- Remove the existing JavaScript code -->
-<script>
-    // JavaScript to handle the popup
-    document.getElementById('openAppointmentForm').addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('appointmentPopup').style.display = 'block';
-    });
-
-    document.getElementById('closeAppointmentForm').addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('appointmentPopup').style.display = 'none';
-    });
-</script>
-
+<form method="post" action="{% url 'hospital:Appointment' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+    <input type="hidden" name="doctor_id" value="{{ doctor.id }}">
+    <!-- Add other form fields for date, time, etc. -->
+    
+    <input type="submit" value="Book Appointment">
+</form>
