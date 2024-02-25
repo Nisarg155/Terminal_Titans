@@ -16,6 +16,7 @@ class hospital_details(models.Model):
     
 
 class Doctor(models.Model):
+    h_id = models.ForeignKey(hospital_details, on_delete=models.CASCADE)
     D_id=models.CharField(max_length=50,primary_key=True,null=False,default='D0001')
     name=models.CharField(max_length=50)
     mobile=models.CharField(default='0',max_length=10)

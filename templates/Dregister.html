@@ -21,7 +21,15 @@
 
         <label for="specialist">Specialist:</label>
         <input type="text" name="specialist" placeholder="Enter your specialist" required>
-
+        
+        
+     <label for="hospital">Hospital:</label>
+     <select name="hospital" id="hospital">
+      <option value="" disabled selected>Select a hospital</option>
+        {% for hospital in hospital_details %}
+        <option value="{{ hospital }}">{{ name }}</option>
+    {% endfor %}
+</select>
         <label for="experience_in_year">Experience (in years):</label>
         <input type="number" name="experience_in_year" placeholder="Enter your experience" required>
 
@@ -37,6 +45,5 @@
         <input type="submit" value="Register">
     </form>
 </div>
-
 </body>
 </html>

@@ -18,3 +18,206 @@
       {% endfor %}
     </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+[14:27, 25/02/2024] Samarth Ganjawala: {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+</head>
+<body style="background-color:rgb(1, 121, 111)">
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="specialistDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Specialist
+                </a>
+                <div class="dropdown-menu" aria-labelledby="specialistDropdown">
+                    <a class="dropdown-item" href="#">Cardiologist</a>
+                    <a class="dropdown-item" href="#">Dermatologist</a>
+                    <a class="dropdown-item" href="#">Orthopedic</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="policyDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Policy
+                </a>
+                <div class="dropdown-menu" aria-labelledby="policyDropdown">
+                    <a class="dropdown-item" href="#">Insurance</a>
+                    <a class="dropdown-item" href="#">Medicare</a>
+                    <a class="dropdown-item" href="#">Private Pay</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <form class="d-flex">
+        <button class="btn btn-outline-success" type="submit">Register</button>
+    </form>
+</nav>
+  
+  <div class="container mt-3">
+    <form class="form-inline">
+        <div class="input-group">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
+    </form>
+  </div>
+  
+  <div class="card border-dark mb-3" style="max-width: 100rem;">
+    <!-- {% for hospital in hospitals %} -->
+    <!-- <div class="card-header" style="color: black;">N.D Desai</div> -->
+    <div class="card-body text-dark" style="background-color: black; border-radius: 12px; ">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="card-img-top" src="/docfinder-high-resolution-logo.png" alt="{{ hospital.name }}" height="200px" width="100px">
+        </div>
+        <div class="col-md-8">
+          <p class="card-text">{{ hospital.description }}</p>
+          <p class="card-text">{{ hospital.city }}, {{ hospital.state }} - {{ hospital.zip_code }}</p>
+          <button type="button" class="btn btn-primary">View Details</button>
+        </div>
+      </div>
+      <br>
+      <!-- {% endfor %} -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Simulate loading delay
+          setTimeout(function () {
+              // Add 'loaded' class to main content, triggering the blur transition
+              document.getElementById("main-content").classList.add("loaded");
+              // Remove loading container
+              document.getElementById("loading-container").style.display = "none";
+          }, 3000); // Adjust the delay time as needed
+      });
+  </script>
+</body>
+</html>
+{% endblock %}
+
+
+
+
+Home,html
+[14:28, 25/02/2024] Samarth Ganjawala: body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(1, 121, 111);
+    color: #fff;
+    overflow: hidden; /* Hide overflow during loading animation */
+}
+
+#loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #01796F;
+    z-index: 1000;
+}
+
+#main-content {
+    transition: filter 0.5s ease-in-out; /* Blur effect duration and easing */
+    z-index: 2000; /* Set a higher z-index for main content */
+}
+
+.loaded #main-content {
+    filter: blur(0); /* Make content clear when loaded */
+}
+
+/* Additional styles for the card */
+.card {
+    margin: 50px;
+    box-shadow: 0 4px 8px rgba…
+[15:54, 25/02/2024] Ddu Arsh Gangani: {% extends 'navbar.html' %}
+{% block content %}
+<style>
+    /* Set background image */
+    body {
+        background-image: url('/media/—Pngtree—hospital\ building\ green\ trees\ cartoon_946077.jpg');
+        background-size: cover; /* Cover the whole window */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    /* Style for the doctor cards */
+    .doctor-card {
+        max-width: 450px;
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 1); /* Adjust opacity here */
+        border-radius: 15px; /* Add rounded corners */
+        padding: 15px; /* Add padding to the card */
+    }
+
+    .img-block {
+        background-color: white;
+    }
+
+    .qwe {
+        padding-top: 2em;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center qwe">
+        <div class="col-md-6 img-block">
+            <h1 class="text-center">{{ hospital.name }}</h1>
+            <p class="text-center">{{ hospital.description }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1 class="text-center">Doctors</h1>
+    <div class="row">
+        {% for d in doctors %}
+        <div class="col-md-4">
+            <div class="card doctor-card">
+                <img src="{{ d.image.url }}" class="card-img-top" alt="Doctor Image">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Name:-</b> {{ d.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ d.specialist }}</h6>
+                    <p class="card-text">{{ d.description }}</p>
+                    <!-- Add any other details you want to display -->
+                </div>
+                <button><a href="" style="text-decoration: none; color: black;">Book Appointment</a></button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

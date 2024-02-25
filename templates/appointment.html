@@ -8,10 +8,11 @@
     <title>Doctor AP</title>
 </head>
 <body>
-<button id="openAppointmentForm">Schedule Appointment</button>
+<div id="appointmentPopup" class="popup" style="display: none;">
+    <!-- Your appointment form goes here -->
 
-<div id="appointmentPopup" style="display: none;">
-<form id="appointmentForm" method="post" action="{% url 'hospital:Appointment' %}">
+
+<form id="openAppointmentForm" method="post" action="{% url 'hospital:Appointment' %}">
         {% csrf_token %}
         <label for="date">Appointment Date:</label>
         <input type="date" id="date" name="date">
@@ -27,13 +28,17 @@
 </html>
 
 
+<!-- Remove the existing JavaScript code -->
 <script>
     // JavaScript to handle the popup
-    document.getElementById('openAppointmentForm').addEventListener('click', function () {
+    document.getElementById('openAppointmentForm').addEventListener('click', function (e) {
+        e.preventDefault();
         document.getElementById('appointmentPopup').style.display = 'block';
     });
 
-    document.getElementById('appointmentForm').addEventListener('submit', function () {
-        // Additional JavaScript logic if needed
+    document.getElementById('closeAppointmentForm').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('appointmentPopup').style.display = 'none';
     });
 </script>
+
