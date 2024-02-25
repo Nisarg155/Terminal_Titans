@@ -1,3 +1,5 @@
+from datetime import date, time
+
 from django.shortcuts import render
 from .models import Doctor
 from .models import hospital_details
@@ -52,7 +54,23 @@ def Uregister(request):
 
     return render(request, 'Uregister.html')
 
+def Appointment(request):
 
+            if request.method == 'POST':
+                user = User.objects.get(id=request.POST['user_id'])
+                doctor = Doctor.objects.get(id=request.POST['doctor_id'])
+                appointment_date = date.fromisoformat(request.POST['date'])
+                appointment_time = time.fromisoformat(request.POST['time'])
+                # Add other fields as needed
+
+                appointment = Appointment.objects.create(user=user, doctor=doctor, date=appointment_date,
+                                                         time=appointment_time)
+                # Redirect or do additional processing as needed
+                return redirect('appointment_success')  # You can create a success page
+
+            # Render the form
+            return render(request, 'appointment.html',
+                          {'users': User.objects.all(), 'doctors': Doctor.objects.all()})
 def home(request):
     hospitals = hospital_details.objects.all()
     return render(request, 'home.html', {'hospitals': hospitals})
