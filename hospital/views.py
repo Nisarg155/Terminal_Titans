@@ -13,7 +13,8 @@ def doctor_detail(request,id):
     hospital = hospital_details.objects.get(id=id)
     doctors=Doctor.objects.filter(hospital_detail=hospital)
     context={
-        'doctors':doctors
+        'hospital': hospital,
+        'doctors':doctors,
     }
     return render(request, 'doctor_view.html', context)
 
@@ -30,9 +31,9 @@ def Dregister(request):
         description = request.POST.get('description')
         image = request.POST.get('image')
         license = request.POST.get('license')
-        D_id = request.COOKIES.get('uid')
+        id = request.COOKIES.get('uid')
 
-        saverecord = Doctor(D_id=D_id, name=name, mobile=mobile,specialist=specialist,
+        saverecord = Doctor(id=id, name=name, mobile=mobile,specialist=specialist,
                             experience_in_year=experience_in_year, description=description,
                             image=image, license=license)
         saverecord.save()
