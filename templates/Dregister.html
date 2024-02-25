@@ -5,37 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Registration</title>
-        <link rel="stylesheet" href="../static/Dregister.css" />
-
+    <link rel="stylesheet" href="../static/Dregister.css" />
 </head>
 <body>
 
+<div class="container">
+    <form method="post" enctype="multipart/form-data" action="{% url 'hospital:Dregister' %}">
+        {% csrf_token %}
 
-  <form method="post" enctype="multipart/form-data" action="{% url 'hospital:Dregister' %}">
-    {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
 
- 
-     <label for="name">Name:</label>
-    <input type="text" name="name" required><br>
-      <label for="mobile">Mobile:</label>
-    <input type="text" name="mobile" required><br>
-    <label for="specialist">Specialist:</label>
-    <input type="text" name="specialist" required><br>
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" placeholder="Enter your mobile number" required>
 
-    <label for="experience_in_year">Experience (in years):</label>
-    <input type="number" name="experience_in_year" required><br>
+        <label for="specialist">Specialist:</label>
+        <input type="text" name="specialist" placeholder="Enter your specialist" required>
+        
+        
+     <label for="hospital">Hospital:</label>
+     <select name="hospital" id="hospital">
+      <option value="" disabled selected>Select a hospital</option>
+        {% for hospital in hospital_details %}
+        <option value="{{ hospital }}">{{ name }}</option>
+    {% endfor %}
+</select>
+        <label for="experience_in_year">Experience (in years):</label>
+        <input type="number" name="experience_in_year" placeholder="Enter your experience" required>
 
-    <label for="description">Description:</label>
-    <textarea name="description" rows="4" cols="50"></textarea><br>
+        <label for="description">Description:</label>
+        <textarea name="description" rows="4" cols="50" placeholder="Enter a brief description"></textarea>
 
-    <label for="image">Image:</label>
-    <input type="file" name="image" accept="image/*" required><br>
+        <label for="image">Image:</label>
+        <input type="file" name="image" accept="image/*" required>
 
-    <label for="license">License Image:</label>
-    <input type="file" name="license" accept="image/*" required><br>
+        <label for="license">License Image:</label>
+        <input type="file" name="license" accept="image/*" required>
 
-    <input type="submit" value="Register">
-  </form>
-
+        <input type="submit" value="Register">
+    </form>
+</div>
 </body>
 </html>

@@ -1,0 +1,24 @@
+/* existing styles */
+
+form {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    padding: 10px 12px;
+    width: 100%;
+    margin: 8px 0;
+    border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
+/* existing styles */

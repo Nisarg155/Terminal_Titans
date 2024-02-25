@@ -1,52 +1,206 @@
-body {
-  background: #01796F;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: grid;
+    place-items: center;
+    align-items: center;
+    font-family: 'Montserrat',sans-serif;
+    height: 100vh;
+    background: url('https://img.freepik.com/free-vector/young-people-using-smartphones_23-2148856195.jpg?w=740&t=st=1685423253~exp=1685423853~hmac=c9da596035019d206806defe77ee4ebafb54b81310421c448930e4f4b41ae7c0') center/cover fixed;
+    margin: 0;
+}
+h1{
+    font-weight: bold;
+    margin: 0;
+}
+
+
+span{
+    font-size: 12px;
 }
 
 form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the alpha value for transparency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+input{
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    padding: 10px 12px;
+    width: 100%;
+    margin: 8px 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.container{
+background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 2em;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px ;
+    position: relative;
+    overflow: hidden;
+    width: 650px;
+    max-width: 100%;
+    min-height: 550px;
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  border: 1px solid #01796F;
-  border-radius: 5px;
+.form-div{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.9s ease-in-out;
+}
+.sign-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+.sign-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+.overlay-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.9s ease-in-out;
+    z-index: 100;
+}
+.overlay{
+    background: rgba(8, 160, 223, 0.8);
+    background: -webkit-linear-gradient(20deg,#08A0DF);
+    background: linear-gradient(0deg,#34a0a4,#08A0DF);
+    background-repeat: no-repeat;
+    background-size:cover ;
+    background-position: 0 0;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.9s ease-in-out;
+}
+.overlay-panel{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.9s ease-in-out;
+}
+.overlay-left{
+    transform: translateX(-20%);
+}
+.overlay-right{
+    right: 0;
+    transform: translateX(0);
 }
 
-input[type="file"] {
-  border: none;
+a{
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
 }
-
 input[type="submit"] {
-  background-color: #01796F;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #01796f; /* Set the background color of the button */
+    border: 1px solid #01796f; /* Set the border color of the button */
+    border-radius: 5px; /* Optional: Add border radius for rounded corners */
+    color: #fff; /* Set the text color of the button */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out; /* Add a smooth transition for hover effect */
 }
 
 input[type="submit"]:hover {
-  background-color: #005248;
+    background-color: #015d52; /* Change the background color on hover */
+    border: 1px solid #015d52; /* Change the border color on hover */
 }
 
+
+.container.right-active .sign-in{
+    transform: translateX(100%);
+    /* background-color: #333; */
+}
+.container.right-active .sign-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.9s;
+    background-color: #333;
+}
+
+@keyframes show{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%,100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.container.right-active .overlay-container{
+    transform: translateX(-100%);
+}
+
+.container.right-active .overlay{
+    transform: translateX(50%);
+}
+
+.container.right-active .overlay-left{
+    transform: translateX(0);
+}
+
+.container.right-active .overlay-right{
+    transform: translateX(20%);
+    /* background-color: #333; */
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    max-width: 229px;
+    background-color: #eee;
+}
+
+select:focus {
+    border: 3px solid black;
+}

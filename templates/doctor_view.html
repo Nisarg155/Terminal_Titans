@@ -1,38 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor-View</title>
-</head>
-<body>
-{#    {% load bootstrap5 %} #}
-{#    {% bootstrap_css %} #}
-{#    {% bootstrap_javascript %}#}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% extends 'navbar.html' %}
+{% block content %}
+<style>
+    /* Set background image */
+    body {
+        background-image: url('/media/—Pngtree—hospital\ building\ green\ trees\ cartoon_946077.jpg');
+        background-size: cover; /* Cover the whole window */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
+    /* Style for the doctor cards */
+    .doctor-card {
+        max-width: 450px;
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 1); /* Adjust opacity here */
+        border-radius: 15px; /* Add rounded corners */
+        padding: 15px; /* Add padding to the card */
+    }
 
+    .img-block {
+        background-color: white;
+    }
 
+    .qwe {
+        padding-top: 2em;
+    }
+</style>
 
+<div class="container">
+    <div class="row justify-content-center qwe">
+        <div class="col-md-6 img-block">
+            <h1 class="text-center">{{ hospital.name }}</h1>
+            <p class="text-center">{{ hospital.description }}</p>
+        </div>
+    </div>
+</div>
 
-    <div class="card-group">
+<div class="container">
+    <h1 class="text-center">Doctors</h1>
+    <div class="row">
         {% for d in doctors %}
-        <div class="card mb-3 text-center">
-            <div class="mb-4">
-                <img src="{{d.image.url}}" class="card-img-top mx-auto d-block" alt="..." style="height: 300px; width: 200px; object-fit: cover;">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{d.name}}</h5>
-                <h5 class="card-text">{{d.specialist}}</h5>
-                <h4 class="card-text">{{d.description}}</h4>
-                
-                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+        <div class="col-md-4">
+            <div class="card doctor-card">
+                <img src="{{ d.image.url }}" class="card-img-top" alt="Doctor Image">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Name:-</b> {{ d.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ d.specialist }}</h6>
+                    <p class="card-text">{{ d.description }}</p>
+                    <!-- Add any other details you want to display -->
+                </div>
+                <button><a href="" style="text-decoration: none; color: black;">Book Appointment</a></button>
             </div>
         </div>
         {% endfor %}
     </div>
-    
-    
-</body>
-</html>
+</div>
+{% endblock %}
