@@ -1,7 +1,15 @@
 from django.db import models
 def user_directory_path(instance, filename):
-    # Upload the file to a directory based on the model name and instance ID
-    return f'{instance.__class__.__name__}/{instance.id}/{filename}'
+    # Use the class name as a default directory
+    directory = instance.__class__.__name__
+
+    # Check if instance has an ID, use it; otherwise, use a placeholder
+    if instance.id:
+        directory = f'{directory}/{instance.id}'
+
+    # Return the final path
+    return f'{directory}/{filename}'
+
 # Create your models here.
 class hospital_details(models.Model):
     hospital_img = models.ImageField(upload_to=user_directory_path)
@@ -22,10 +30,9 @@ class Doctor(models.Model):
     specialist=models.CharField(max_length=30)
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
-    image=models.ImageField(upload_to='doctor/')
     hospital_detail=models.ForeignKey(hospital_details,on_delete=models.CASCADE,null=True)
     image=models.ImageField(upload_to=user_directory_path)
-    license=models.ImageField(upload_to='doctor/')
+    license=models.ImageField(upload_to=user_directory_path)
 
 
 

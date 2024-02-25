@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(1, 121, 111);
+    color: #fff;
+}
+
+#loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #01796F;
+    z-index: 1000;
+}
+
+#main-content {
+    transition: filter 0.5s ease-in-out; /* Blur effect duration and easing */
+    z-index: 2000; /* Set a higher z-index for main content */
+}
+
+.loaded #main-content {
+    filter: blur(0); /* Make content clear when loaded */
+}
+
+/* Additional styles for the card */
+.card {
+    margin: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+    border-radius: 10px; /* Border radius for rounded corners */
+}
