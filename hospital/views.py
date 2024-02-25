@@ -87,3 +87,17 @@ def Appointment(request):
 def home(request):
     hospitals = hospital_details.objects.all()
     return render(request, 'home.html', {'hospitals': hospitals})
+
+def filter_by_specialist(request, specialist):
+    # Get the list of hospital ids that have doctors with the given specialist
+    hospital_ids = Doctor.objects.filter(specialist=specialist).values_list('hospital_detail', flat=True)
+    
+    # Filter hospitals based on the retrieved ids
+    hospitals = hospital_details.objects.filter(id__in=hospital_ids)
+    
+    context = {
+        'hospitals': hospitals,
+        'specialist': specialist,
+    }
+
+    return render(request, 'filter_by_specialist.html', context)

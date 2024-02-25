@@ -1,0 +1,25 @@
+<!-- filter_by_specialist.html -->
+{% extends 'navbar.html' %}
+
+{% block content %}
+  <h2>Hospitals with {{ specialist }} Specialists</h2>
+  <ul>
+    {% for hospital in hospitals %}
+    <div class="card border-dark mb-3 my-3" style="max-width: 100rem; background-color: #a6dcef;">
+        <div class="card-body text-dark" style="border-radius: 12px;">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="card-img-top" src="{{hospital.hospital_img.url}}" alt="{{ hospital.name }}" height="200px" width="100px" style="border:2px solid black">
+            </div>
+            <div class="col-md-8">
+              <p class="card-text">{{ hospital.description }}</p>
+              <p class="card-text">{{ hospital.city }}, {{ hospital.state }} - {{ hospital.zip_code }}</p>
+              <button type="button" class="btn btn-primary"><a href="/doctor/{{hospital.id}}" style="text-decoration: none; color: black;">View Details</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+  </ul>
+{% endblock %}

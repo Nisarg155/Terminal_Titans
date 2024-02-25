@@ -9,5 +9,7 @@ urlpatterns = [
     path('Dregister/',views.Dregister,name='Dregister'),
     path('Uregister/', views.Uregister, name='Uregister'),
     path('Appointment/', views.Appointment, name='Appointment'),
+    
+     path('<str:specialist>/', views.filter_by_specialist, name='filter_by_specialist'),
 
 ]
