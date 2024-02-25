@@ -16,8 +16,9 @@ class hospital_details(models.Model):
     
 
 class Doctor(models.Model):
+    D_id=models.CharField(max_length=50,primary_key=True,null=False,default='D0001')
     name=models.CharField(max_length=50)
-    email=models.EmailField(unique=True,max_length=40)
+    mobile=models.CharField(default='0',max_length=10)
     specialist=models.CharField(max_length=30)
     experience_in_year=models.IntegerField()
     description=models.TextField(blank=True,null=True)
@@ -33,11 +34,11 @@ class Doctor(models.Model):
     
 
 class User(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.CharField(max_length=50,primary_key=True);
     name = models.CharField(max_length=50)
     # email = models.EmailField(max_length=50)
     blood_group = models.CharField(max_length=5)
-    mobile_no = models.IntegerField()
+    mobile_no = models.CharField(max_length=10,default='0')
     allergies_description = models.TextField(blank=True,null=True)
 
     def __str__(self):

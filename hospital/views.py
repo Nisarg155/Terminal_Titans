@@ -6,31 +6,36 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Doctor, User  # Add import statement for the User model
 
-def doctor_detail(request):
-    doctors=Doctor.objects.all()
-    context={
-        'doctors':doctors
-    }
-    return render(request,'doctor_view.html',context)
-# Create your views here.
 
+def doctor_detail(request):
+    doctors = Doctor.objects.all()
+    context = {
+        'doctors': doctors
+    }
+    return render(request, 'doctor_view.html', context)
+
+
+# Create your views here.
 
 
 def Dregister(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        mobile= request.POST.get('mobile')
         specialist = request.POST.get('specialist')
         experience_in_year = request.POST.get('experience_in_year')
         description = request.POST.get('description')
         image = request.POST.get('image')
         license = request.POST.get('license')
+        D_id = request.COOKIES.get('uid')
 
-        saverecord = Doctor(name=name, email=email, specialist=specialist, experience_in_year=experience_in_year, description=description,
+        saverecord = Doctor(D_id=D_id, name=name, mobile=mobile,specialist=specialist,
+                            experience_in_year=experience_in_year, description=description,
                             image=image, license=license)
         saverecord.save()
 
     return render(request, 'Dregister.html')
+
 
 def Uregister(request):
     if request.method == 'POST':
@@ -38,8 +43,9 @@ def Uregister(request):
         blood_group = request.POST.get('blood_group')
         mobile_no = request.POST.get('mobile_no')
         allergies_description = request.POST.get('allergies_description')
-
-        saverecord = User(name=name, blood_group=blood_group, mobile_no=mobile_no, allergies_description=allergies_description)
+        uid = request.COOKIES.get('uid')
+        saverecord = User(user_id=uid, name=name, blood_group=blood_group, mobile_no=mobile_no,
+                          allergies_description=allergies_description)
         saverecord.save()
 
     return render(request, 'Uregister.html')

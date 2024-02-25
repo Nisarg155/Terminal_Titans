@@ -47,17 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const signup = document.getElementById("formSignup");
     signup.addEventListener("submit", function (event) {
         event.preventDefault();
-        const name = signup["name"].value;
         const email = signup["email"].value;
         const password = signup["password"].value;
-        console.log(name, email, password);
         const roleValue = role.options[role.selectedIndex].value;
         console.log(roleValue);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 let uid = userCredential.user.uid;
                 document.cookie = `uid=${uid}`;
-                document.cookie = `role=${roleValue}`;
+                document.cookie = `name=${name}`;
                 if(roleValue === "Doctor")
                 window.location.href = "Dregister";
                 else if(roleValue === "Patient")
