@@ -49,8 +49,11 @@
                     <p class="card-text">{{ d.description }}</p>
                     <!-- Add any other details you want to display -->
                 </div>
-                <button><a href="" style="text-decoration: none; color: black;">Book Appointment</a></button>
-            </div>
+                
+                <button onclick="openAppointmentForm('{{ user.id }}', '{{ d.id }}')">
+                    Book Appointment
+                </button>
+            </div>            
         </div>
         {% endfor %}
     </div>

@@ -37,9 +37,13 @@ def Dregister(request):
                             experience_in_year=experience_in_year, description=description,
                             image=image, license=license)
         saverecord.save()
-        redirect('hospital:home')
 
-    return render(request, 'Dregister.html')
+        redirect('hospital:home')
+    hospital = hospital_details.objects.all()
+    context = {
+        'hpts': hospital,
+    }
+    return render(request, 'Dregister.html',context)
 
 
 def Uregister(request):
@@ -56,23 +60,30 @@ def Uregister(request):
 
     return render(request, 'Uregister.html')
 
+
 def Appointment(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        doctor_id = request.POST.get('doctor_id')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
 
-            if request.method == 'POST':
-                user = User.objects.get(id=request.POST['user_id'])
-                doctor = Doctor.objects.get(id=request.POST['doctor_id'])
-                appointment_date = date.fromisoformat(request.POST['date'])
-                appointment_time = time.fromisoformat(request.POST['time'])
-                # Add other fields as needed
+        # Perform validation as needed
 
-                appointment = Appointment.objects.create(user=user, doctor=doctor, date=appointment_date,
-                                                         time=appointment_time)
-                # Redirect or do additional processing as needed
-                return redirect('appointment_success')  # You can create a success page
+        appointment = Appointment.objects.create(
+            user_id=user_id,
+            doctor_id=doctor_id,
+            date=date,
+            time=time
+        )
 
-            # Render the form
-            return render(request, 'appointment.html',
-                          {'users': User.objects.all(), 'doctors': Doctor.objects.all()})
+        # Additional processing or redirect as needed
+        return redirect('appointment_success')  # You can create a success page
+
+    # Render the form
+    return render(request, 'appointment.html', {'users': User.objects.all(), 'doctors': Doctor.objects.all()})
+
+
 def home(request):
     hospitals = hospital_details.objects.all()
     return render(request, 'home.html', {'hospitals': hospitals})

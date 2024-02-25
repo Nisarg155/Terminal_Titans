@@ -1,9 +1,9 @@
+# forms.py
 from django import forms
-
-from hospital.models import Appointment
-
+from .models import Appointment
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['date', 'time']
+        fields = ['user', 'doctor', 'date', 'time']
+        # Add any additional form customization as needed
