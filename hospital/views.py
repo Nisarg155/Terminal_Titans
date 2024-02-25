@@ -6,8 +6,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Doctor, User  # Add import statement for the User model
 
-def doctor_detail(request):
-    doctors=Doctor.objects.all()
+def doctor_detail(request,id):
+    hospital = hospital_details.objects.get(id=id)
+    doctors=Doctor.objects.filter(hospital_detail=hospital)
     context={
         'doctors':doctors
     }
